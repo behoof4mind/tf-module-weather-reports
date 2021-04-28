@@ -19,7 +19,7 @@ set -Ux AWS_SECRET_ACCESS_KEY <YOUR AWS_SECRET_ACCESS_KEY>
 Create main.tf file
 ```json
 module "webserver_cluster" {
-  source              = "github.com/behoof4mind/tf-module-weather-reports?ref=0.0.9"
+  source              = "github.com/behoof4mind/tf-module-weather-reports?ref=0.0.1"
   region              = "us-east-2"
   bucket_name_prefix  = "crazy-berlin-weather"
   s3_acl_type         = "private"
@@ -60,7 +60,7 @@ module "webserver_cluster" {
 }
 ```
 _- these variables in example are default, if you don't want to override them - only source line should be specified;_<br>
-_- dont forget to use latest varion of module in ref=0.0.9 notation_
+_- dont forget to use latest varion of module in ref=0.0.1 notation_
 Make init
 ```shell
 terraform init
