@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "weather-reports-hourly" {
-  bucket = "{var.bucket_name_prefix}-{var.hourly.suffix}"
+  bucket = "${var.bucket_name_prefix}-${var.hourly.suffix}"
   acl    = var.hourly.acl_type
 
   cors_rule {
@@ -27,7 +27,7 @@ resource "aws_s3_bucket" "weather-reports-hourly" {
     id = var.hourly.suffix
     enabled = true
 
-    prefix = "{var.hourly.suffix}/"
+    prefix = "${var.hourly.suffix}/"
 
     tags = {
       rule = var.hourly.suffix
@@ -45,5 +45,13 @@ resource "aws_s3_bucket" "weather-reports-hourly" {
     expiration {
       days = var.hourly.expiration
     }
+  }
+}
+
+resource "aws_s3_access_point" "weather-reports-hourly" {
+  bucket = aws_s3_bucket.weather-reports-hourly.id
+  name   = "${var.bucket_name_prefix}-${var.hourly.suffix}"
+  vpc_configuration {
+    vpc_id = aws_vpc.weather-reports.id
   }
 }

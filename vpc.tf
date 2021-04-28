@@ -3,13 +3,9 @@ provider "aws" {
   region = var.region
 }
 
-module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "2.66.0"
-
-  name                 = "${var.bucket_name_prefix}-vpc"
-
+resource "aws_vpc" "weather-reports" {
+  cidr_block = "10.0.0.0/16"
   tags = {
-    Service     = var.bucket_name_prefix
+    Service = var.bucket_name_prefix
   }
 }

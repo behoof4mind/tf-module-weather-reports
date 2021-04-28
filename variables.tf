@@ -21,13 +21,13 @@ variable "hourly" {
   type = map(any)
 
   default = {
-    suffix            = "daily"
+    suffix            = "hourly"
     acl_type          = "private"
     expiration        = 90
     transition_1_sc   = "STANDARD_IA"
     transition_1_days = 30
     transition_2_sc   = "GLACIER"
-    transition_2_days = 30
+    transition_2_days = 60
   }
 }
 
@@ -41,7 +41,7 @@ variable "daily" {
     transition_1_sc   = "STANDARD_IA"
     transition_1_days = 30
     transition_2_sc   = "GLACIER"
-    transition_2_days = 30
+    transition_2_days = 60
   }
 }
 
@@ -49,12 +49,12 @@ variable "weekly" {
   type = map(any)
 
   default = {
-    suffix            = "daily"
+    suffix            = "weekly"
     acl_type          = "private"
     expiration        = 360
     transition_1_sc   = "STANDARD_IA"
     transition_1_days = 30
     transition_2_sc   = "GLACIER"
-    transition_2_days = 30
+    transition_2_days = 60
   }
 }

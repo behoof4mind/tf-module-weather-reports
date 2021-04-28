@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "weather-reports-daily" {
-  bucket = "{var.bucket_name_prefix}-{var.daily.suffix}"
+  bucket = "${var.bucket_name_prefix}-${var.daily.suffix}"
   acl    = var.daily.acl_type
 
   cors_rule {
@@ -27,7 +27,7 @@ resource "aws_s3_bucket" "weather-reports-daily" {
     id      = var.daily.suffix
     enabled = true
 
-    prefix = "{var.daily.suffix}/"
+    prefix = "${var.daily.suffix}/"
 
     tags = {
       rule = var.daily.suffix
@@ -45,5 +45,13 @@ resource "aws_s3_bucket" "weather-reports-daily" {
     expiration {
       days = var.daily.expiration
     }
+  }
+}
+
+resource "aws_s3_access_point" "weather-reports-daily" {
+  bucket = aws_s3_bucket.weather-reports-daily.id
+  name   = "${var.bucket_name_prefix}-${var.daily.suffix}"
+  vpc_configuration {
+    vpc_id = aws_vpc.weather-reports.id
   }
 }
