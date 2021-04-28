@@ -17,7 +17,7 @@ set -Ux AWS_SECRET_ACCESS_KEY <YOUR AWS_SECRET_ACCESS_KEY>
 ```
 
 Create main.tf file
-```json
+```terraform
 module "webserver_cluster" {
   source              = "github.com/behoof4mind/tf-module-weather-reports?ref=0.0.1"
   region              = "us-east-2"
