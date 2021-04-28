@@ -82,6 +82,13 @@ Apply changes
 terraform apply
 ```
 
+As result, you should see output with access points like:
+```shell
+daily_endpoint = "crazy-berlin-weather-daily-307150142929.s3-accesspoint.us-east-2.amazonaws.com"
+hourly_endpoint = "crazy-berlin-weather-hourly-307150142929.s3-accesspoint.us-east-2.amazonaws.com"
+weekly_endpoint = "crazy-berlin-weather-weekly-307150142929.s3-accesspoint.us-east-2.amazonaws.com"
+```
+
 ## Contributing
 
 Thanks for considering contributing! There’s information about how to [get started with tf-module-weather-reports module](CONTRIBUTE.md)
