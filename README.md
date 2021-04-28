@@ -55,9 +55,6 @@ module "webserver_cluster" {
     transition_2_days = 30
   }
 }
-
-
-}
 ```
 _- these variables in example are default, if you don't want to override them - only source line should be specified;_<br>
 _- dont forget to use latest varion of module in ref=0.0.1 notation_
